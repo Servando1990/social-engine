@@ -1,0 +1,13 @@
+sources:
+  - type: markdown
+    name: agents-campaigns-notes
+    paths:
+      - /Users/servandodavidtorresgarcia/Servando/controlthrive/agents-campaigns
+    glob: "**/*.md"
+    max_files: 5
+  - type: markdown
+    name: website-blog-posts
+    paths:
+      - /Users/servandodavidtorresgarcia/Servando/controlthrive/website-blog/apps/blog/src/content/posts
+    glob: "**/*.md"
+    max_files: 5

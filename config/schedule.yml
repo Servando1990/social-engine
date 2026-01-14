@@ -1,0 +1,6 @@
+defaults:
+  timezone: "UTC"
+  publish_mode: "scheduled"
+  hours:
+    linkedin: "10:00"
+    twitter: "14:00"
