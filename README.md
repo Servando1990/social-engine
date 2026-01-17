@@ -1,29 +1,33 @@
-# Social Engine (Minimal)
+# Social Engine (Amp-Powered)
 
-This is a small tool to capture ideas, generate drafts from your repos, and schedule posts to Publer.
+Dead simple social media content workflow powered by Amp AI.
 
-## Quick Start
+## How It Works
 
-1. Copy environment file
-2. Add your API key and account IDs
-3. Run the scripts
+1. **Write prompts** → Create markdown files in `prompts/` with content ideas
+2. **Run Amp** → Tell Amp: "Read WORKFLOW_FOR_AMP.md and run it"
+3. **Review** → Check generated posts in `drafts/`
+4. **Publish** → Amp schedules to Publer (LinkedIn + X/Twitter)
 
-"""bash
+## Setup
+
+```bash
 cp config/env.example .env
-python scripts/01_validate_auth.py
-python scripts/02_list_accounts.py
-python scripts/03_generate_drafts.py
-python scripts/04_schedule_posts.py --dry-run
-"""
+# Add your Publer API credentials
+```
 
-## Configuration
+## Usage
 
-- `config/sources.yml` controls where content is pulled from
-- `config/accounts.yml` stores account IDs for LinkedIn and X
-- `config/schedule.yml` stores posting cadence and defaults
+```bash
+# Start Amp and say:
+"Read WORKFLOW_FOR_AMP.md and run it"
+```
 
-## Notes
+That's it. No Python scripts to run.
 
-- This project is intentionally small
-- It favors control over full automation
-- You can expand sources and formatting later
+## What's What
+
+- `prompts/` - Your content ideas (you write these)
+- `drafts/` - Generated posts (Amp creates these)
+- `config/` - API credentials and account settings
+- `WORKFLOW_FOR_AMP.md` - Instructions for Amp to execute

@@ -1,5 +1,0 @@
-accounts:
-  linkedin:
-    id: "${PUBLER_LINKEDIN_ACCOUNT_ID}"
-  twitter:
-    id: "${PUBLER_X_ACCOUNT_ID}"

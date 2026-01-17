@@ -3,9 +3,9 @@
 ## When I ask you to run this workflow:
 
 ### 1. Find Content Ideas
-- Look in `agents-campaigns` repo for recent interesting work
-- Check this thread for any insights worth sharing
-- Ask me if I have specific topics in mind
+- Check `prompts/` folder for my content ideas
+- Or look in `agents-campaigns` repo for recent work
+- Or ask me for specific topics
 
 ### 2. Generate Posts
 For each idea:
@@ -19,7 +19,8 @@ For each idea:
 
 ### 4. Publish to Publer
 - Read approved drafts from `drafts/`
-- Use `src/publer/scheduler.py` to schedule posts
+- Use Publer API to schedule posts (credentials in config/.env)
+- API: POST to `https://app.publer.com/api/v1/posts/schedule`
 - Confirm what was scheduled
 
 ## Post Format Template

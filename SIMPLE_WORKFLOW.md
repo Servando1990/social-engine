@@ -1,28 +1,23 @@
 # Super Simple Workflow
 
-## 3 Steps Total
-
-### Step 1: Extract Ideas
+## 1. Create Content Idea
 ```bash
-python scripts/03_generate_drafts.py
+# Create a new file in prompts/
+echo "Topic: My latest project..." > prompts/my-idea.md
 ```
-- Pulls from your repos and blog
-- Creates draft files in `drafts/`
 
-### Step 2: Edit Drafts
-- Open `drafts/` folder
-- Edit the posts you like
-- Delete the ones you don't
-
-### Step 3: Publish
-```bash
-python scripts/04_schedule_posts.py
+## 2. Run Amp
+Open Amp and say:
 ```
-- Sends drafts to Publer
-- Posts go live immediately or scheduled
+Read WORKFLOW_FOR_AMP.md and run it
+```
+
+## 3. Review
+Check `drafts/` folder, edit posts
+
+## 4. Publish
+Tell Amp to continue, or manually approve
 
 ---
 
-## That's It
-
-Run step 1 whenever you want ideas. Edit. Publish.
+That's it. No scripts. No Python commands.
