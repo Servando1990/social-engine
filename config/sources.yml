@@ -4,10 +4,8 @@ sources:
     paths:
       - /Users/servandodavidtorresgarcia/Servando/controlthrive/agents-campaigns
     glob: "**/*.md"
-    max_files: 5
-  - type: markdown
-    name: website-blog-posts
-    paths:
-      - /Users/servandodavidtorresgarcia/Servando/controlthrive/website-blog/apps/blog/src/content/posts
-    glob: "**/*.md"
-    max_files: 5
+    max_files: 10
+  # - type: amp_threads
+  #   name: amp-interactions
+  #   filters: "last 7 days"
+  #   max_threads: 5
