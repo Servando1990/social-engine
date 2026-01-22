@@ -1,37 +1,83 @@
-# Social Content Workflow (for Amp to Execute)
+# Social Content Workflow (for Amp)
 
-## When I ask you to run this workflow:
+## Quick Commands
 
-### 1. Find Content Ideas
-- Check `prompts/` folder for my content ideas
-- Or look in `agents-campaigns` repo for recent work
-- Or ask me for specific topics
+```bash
+python social.py status                    # See pipeline overview
+python social.py ingest prompts            # Pull ideas from prompts/
+python social.py draft --batch             # Generate drafts
+python social.py review                    # List drafts
+python social.py plan --from-approved      # Create schedule
+python social.py apply queue/plan.json     # Publish to Publer
+python social.py queue ls --platform x     # View queue
+```
 
-### 2. Generate Posts
-For each idea:
-- Create LinkedIn version (professional, detailed, 2-3 paragraphs)
-- Create X/Twitter version (concise, punchy, 1-2 tweets)
-- Save in `drafts/[topic-name]-linkedin.md` and `drafts/[topic-name]-twitter.md`
+## Full Workflow
 
-### 3. Wait for My Review
-- Tell me to review `drafts/` folder
-- I'll edit or delete
+### 1. Ingest Ideas
+Sources:
+- `prompts/` - Raw ideas (markdown files)
+- `inputs/transcripts/` - Meeting transcripts
+- `agents-campaigns` repo - Recent work
 
-### 4. Publish to Publer
-- Read approved drafts from `drafts/`
-- Use Publer API to schedule posts (credentials in config/.env)
-- API: POST to `https://app.publer.com/api/v1/posts/schedule`
-- Confirm what was scheduled
+```bash
+python social.py ingest prompts
+python social.py ingest transcripts
+python social.py ingest agents --since 7d
+```
 
-## Post Format Template
+### 2. Generate Drafts
+```bash
+python social.py draft --batch --limit 10
+```
+Creates `drafts/*-linkedin.md` and `drafts/*-twitter.md`
+
+### 3. Review & Approve
+User reviews drafts, then:
+```bash
+python social.py review --approve drafts/<filename>.md
+```
+
+### 4. Plan Schedule
+```bash
+python social.py plan --from-approved --start tomorrow --time "09:00" --every 2d
+```
+Creates `queue/plan.json` - user can edit for exact control.
+
+### 5. Apply to Publer
+```bash
+python social.py apply queue/plan.json --dry-run   # Preview
+python social.py apply queue/plan.json             # Publish
+```
+
+### 6. Manage Queue
+```bash
+python social.py queue ls --platform linkedin
+python social.py queue ls --platform x
+python social.py queue cancel <post_id>
+```
+
+## Post Format
 
 **LinkedIn:**
 - Professional tone
-- Include key insight + why it matters + lesson learned
-- 2-4 relevant hashtags
+- 2-3 paragraphs
+- Key insight + why it matters + lesson
+- 3-4 hashtags
 
 **Twitter/X:**
-- Technical but concise
+- Concise, punchy
 - Lead with the insight
-- Thread if needed (numbered)
+- Thread if needed
 - 1-2 hashtags max
+
+## Files
+
+| Folder | Purpose |
+|--------|---------|
+| `prompts/` | Raw ideas you write |
+| `ideas/` | Normalized ideas (auto) |
+| `drafts/` | Generated posts (auto) |
+| `queue/` | Schedule plans |
+| `state/` | Event logs |
+| `config/.env` | PUBLER_API_KEY |
